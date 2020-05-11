@@ -18,7 +18,7 @@ public class Main {
 				productList.add(new Tree("tree", 10, 15));
 				productList.add(new Flower("flower", 5.5, "red"));
 				Type type = Type.PLASTIC;
-				productList.add(new Decoration("decoration", 5.5,type));
+				productList.add(new Decoration("decoration", 5.5, type));
 			} catch (Exception e) {
 				writeToLog(new Exception("Something wrong with preloaded product data"));
 				e.printStackTrace();
@@ -112,7 +112,7 @@ public class Main {
 
 			Product newProductF = new Flower(nameF, priceF, colorF);
 			productList.add(newProductF);
-			System.out.println("The new Tree has been introduced! \n" + newProductF.toString());
+			System.out.println("The new Flower has been introduced! \n" + newProductF.toString());
 			Main.shopConsole();
 			break;
 		case "3":
@@ -120,13 +120,14 @@ public class Main {
 
 			System.out.println("Please introduce the name of your Decoration without blank spaces.");
 			String nameD = (scanner.next().toLowerCase());
-			
+
 			boolean isRight = true;
 			Type matt = null;
 			do {
-				System.out.println("Please introduce the material of the Decoration without blank spaces. (plastic or wood)");
+				System.out.println(
+						"Please introduce the material of the Decoration without blank spaces. (plastic or wood)");
 				String materialD = (scanner.next().toLowerCase());
-				
+
 				if (materialD.equals("plastic")) {
 					matt = Type.PLASTIC;
 					isRight = false;
@@ -136,19 +137,19 @@ public class Main {
 				} else {
 					System.out.println("Material not valid");
 				}
-			}while(isRight);
+			} while (isRight);
 
 			System.out.println("Please introduce the price without blank spaces.");
 			Double priceD = (scanner.nextDouble());
 
-			Product newProductD = new Decoration(nameD,priceD, matt);
+			Product newProductD = new Decoration(nameD, priceD, matt);
 			productList.add(newProductD);
-			System.out.println("The new Tree has been introduced! \n" + newProductD.toString());
+			System.out.println("The new Decoration has been introduced! \n" + newProductD.toString());
 			Main.shopConsole();
 			break;
 		case "4":
 			System.out.println("Your Products in Stock  are:");
-			System.out.println(productList.toString());
+			System.out.println(productList.toString().substring(1).replaceFirst("]", "").replaceAll(",", ""));
 			Main.shopConsole();
 			break;
 		case "5":

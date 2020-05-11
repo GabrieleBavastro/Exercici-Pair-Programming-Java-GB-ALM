@@ -5,7 +5,7 @@ public class Decoration extends Product {
 
 	public Decoration(String name, double price, Type type) {
 		super(name, price);
-		type = type;
+		this.type = type;
 	}
 
 	public Type getType() {
@@ -15,8 +15,11 @@ public class Decoration extends Product {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "\nDecoration: \n" + " Name: " + getName() + "\n Cost: " + getCost() + "€\n" + " Type:" + getType()
+				+ "\n";
+	}
 
 }
