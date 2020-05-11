@@ -149,7 +149,7 @@ public class Main {
 			break;
 		case "4":
 			System.out.println("Your Products in Stock  are:");
-			System.out.println(productList.toString().substring(1).replaceFirst("]", "").replaceAll(",", ""));
+			System.out.println(newShop.getProductsList().toString().substring(1).replaceFirst("]", "").replaceAll(",", ""));
 			newShop.printStocks();
 			Main.shopConsole(newShop);
 			break;
