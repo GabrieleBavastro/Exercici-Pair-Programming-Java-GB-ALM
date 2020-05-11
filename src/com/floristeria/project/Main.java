@@ -7,7 +7,6 @@ public class Main {
 
 	public static Scanner scanner = new Scanner((System.in));
 	static ArrayList<Shop> shopList = new ArrayList<Shop>();
-	static ArrayList<Product> productList = new ArrayList<Product>();
 
 	public static void main(String[] args) {
 
