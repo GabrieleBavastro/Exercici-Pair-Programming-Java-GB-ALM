@@ -31,34 +31,21 @@ public class Shop {
 		this.productsList.add(product);
 	}
 	
-	public void printTrees() {
-		String trees = "";
+	public void printStocks() {
+		String trees = "Trees: \n ";
+		String flowers = "Flowers: \n";
+		String decorations = "Decorations: \n";
 		for(Product p : productsList) {
 			if (p instanceof Tree) {
 				trees += "T";
-			}
-		}
-		System.out.println(trees);
-	}
-	
-	public void printFlowers() {
-		String flowers = "";
-		for(Product p : productsList) {
-			if (p instanceof Flower) {
+			} else if (p instanceof Flower) {
 				flowers += "Y";
-			}
-		}
-		System.out.println(flowers);
-	}
-	
-	public void printDecorations() {
-		String decorations = "";
-		for(Product p : productsList) {
-			if (p instanceof Decoration) {
+			} else if (p instanceof Decoration) {
 				decorations += "X";
 			}
 		}
+		System.out.println(trees);
+		System.out.println(flowers);
 		System.out.println(decorations);
 	}
-
 }

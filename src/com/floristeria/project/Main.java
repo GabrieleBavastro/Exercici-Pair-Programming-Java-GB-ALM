@@ -51,7 +51,7 @@ public class Main {
 			}
 			shopList.add(newShop);
 			System.out.println("The new Flower Shop has been created!" + newShop.toString());
-			Main.shopConsole();
+			Main.shopConsole(newShop);
 			break;
 
 		case "2":
@@ -71,7 +71,7 @@ public class Main {
 
 	}
 
-	public static void shopConsole() {
+	public static void shopConsole(Shop newShop) {
 
 		System.out.println("What do you want to do?" + "\n 1 - Add a new Tree. "
 				+ "\n 2 - Add a new Flower. \n 3 - Add a new Garden Decoration. "
@@ -94,9 +94,9 @@ public class Main {
 			Double priceT = (scanner.nextDouble());
 
 			Product newProductT = new Tree(nameT, priceT, heightT);
-			productList.add(newProductT);
+			newShop.addProduct(newProductT);
 			System.out.println("The new Tree has been introduced! \n" + newProductT.toString());
-			Main.shopConsole();
+			Main.shopConsole(newShop);
 			break;
 		case "2":
 			System.out.println("You chosed introduce a new Flower!");
@@ -111,9 +111,9 @@ public class Main {
 			Double priceF = (scanner.nextDouble());
 
 			Product newProductF = new Flower(nameF, priceF, colorF);
-			productList.add(newProductF);
+			newShop.addProduct(newProductF);
 			System.out.println("The new Flower has been introduced! \n" + newProductF.toString());
-			Main.shopConsole();
+			Main.shopConsole(newShop);
 			break;
 		case "3":
 			System.out.println("You chosed introduce a new Decoration!");
@@ -143,21 +143,22 @@ public class Main {
 			Double priceD = (scanner.nextDouble());
 
 			Product newProductD = new Decoration(nameD, priceD, matt);
-			productList.add(newProductD);
+			newShop.addProduct(newProductD);
 			System.out.println("The new Decoration has been introduced! \n" + newProductD.toString());
-			Main.shopConsole();
+			Main.shopConsole(newShop);
 			break;
 		case "4":
 			System.out.println("Your Products in Stock  are:");
 			System.out.println(productList.toString().substring(1).replaceFirst("]", "").replaceAll(",", ""));
-			Main.shopConsole();
+			newShop.printStocks();
+			Main.shopConsole(newShop);
 			break;
 		case "5":
 			System.out.println("Good Bye! We hope to see you again soon!");
 			break;
 		default:
 			System.out.println("ERROR! Please choose a number between 1 and 5!");
-			Main.shopConsole();
+			Main.shopConsole(newShop);
 		}
 	}
 }
