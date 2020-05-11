@@ -11,21 +11,6 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// Add Preload Products
-
-		if (productList.size() == 0) {
-			try {
-				productList.add(new Tree("tree", 10, 15));
-				productList.add(new Flower("flower", 5.5, "red"));
-				Type type = Type.PLASTIC;
-				productList.add(new Decoration("decoration", 5.5, type));
-			} catch (Exception e) {
-				writeToLog(new Exception("Something wrong with preloaded product data"));
-				e.printStackTrace();
-			}
-
-		}
-
 		System.out.println("Welcome to Future Flower Shop! What do you want to do?"
 				+ "\n 1 - Create a new Flower Shop. \n 2 - Exit.");
 
