@@ -15,9 +15,10 @@ public class Main {
 
 		if (productList.size() == 0) {
 			try {
-				productList.add(new Product("tree", "10 feet", 15));
-				productList.add(new Product("flower", "red", 5.5));
-				productList.add(new Product("decoration", "plastic", 5.5));
+				productList.add(new Tree("tree", 10, 15));
+				productList.add(new Flower("flower", 5.5, "red"));
+				Type type = Type.PLASTIC;
+				productList.add(new Decoration("decoration", 5.5,type));
 			} catch (Exception e) {
 				writeToLog(new Exception("Something wrong with preloaded product data"));
 				e.printStackTrace();
@@ -87,12 +88,12 @@ public class Main {
 			String nameT = (scanner.next().toLowerCase());
 
 			System.out.println("Please introduce the height of the tree without blank spaces.");
-			String heightT = (scanner.next().toLowerCase());
+			Double heightT = (scanner.nextDouble());
 
 			System.out.println("Please introduce the price without blank spaces.");
 			Double priceT = (scanner.nextDouble());
 
-			Product newProductT = new Product(nameT, heightT, priceT);
+			Product newProductT = new Tree(nameT, priceT, heightT);
 			productList.add(newProductT);
 			System.out.println("The new Tree has been introduced! \n" + newProductT.toString());
 			Main.shopConsole();
@@ -109,7 +110,7 @@ public class Main {
 			System.out.println("Please introduce the price without blank spaces.");
 			Double priceF = (scanner.nextDouble());
 
-			Product newProductF = new Product(nameF, colorF, priceF);
+			Product newProductF = new Flower(nameF, priceF, colorF);
 			productList.add(newProductF);
 			System.out.println("The new Tree has been introduced! \n" + newProductF.toString());
 			Main.shopConsole();
@@ -119,14 +120,28 @@ public class Main {
 
 			System.out.println("Please introduce the name of your Decoration without blank spaces.");
 			String nameD = (scanner.next().toLowerCase());
-
-			System.out.println("Please introduce the material of the Decoration without blank spaces.");
-			String materialD = (scanner.next().toLowerCase());
+			
+			boolean isRight = true;
+			Type matt = null;
+			do {
+				System.out.println("Please introduce the material of the Decoration without blank spaces. (plastic or wood)");
+				String materialD = (scanner.next().toLowerCase());
+				
+				if (materialD.equals("plastic")) {
+					matt = Type.PLASTIC;
+					isRight = false;
+				} else if (materialD.equalsIgnoreCase("wood")) {
+					matt = Type.WOOD;
+					isRight = false;
+				} else {
+					System.out.println("Material not valid");
+				}
+			}while(isRight);
 
 			System.out.println("Please introduce the price without blank spaces.");
 			Double priceD = (scanner.nextDouble());
 
-			Product newProductD = new Product(nameD, materialD, priceD);
+			Product newProductD = new Decoration(nameD,priceD, matt);
 			productList.add(newProductD);
 			System.out.println("The new Tree has been introduced! \n" + newProductD.toString());
 			Main.shopConsole();
